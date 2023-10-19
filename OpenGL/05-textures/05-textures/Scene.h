@@ -26,6 +26,7 @@ public:
 	void init();
 	void update(int deltaTime);
 	void render();
+	void manageXPos(int x);
 
 private:
 	void initShaders();
@@ -37,6 +38,7 @@ private:
 	ShaderProgram simpleProgram, texProgram;
 	float currentTime;
 	glm::mat4 projection;
+	float x_pos = 0;
 
 };
 

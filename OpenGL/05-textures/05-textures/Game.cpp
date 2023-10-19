@@ -27,6 +27,11 @@ void Game::keyPressed(int key)
 {
 	if(key == 27) // Escape code
 		bPlay = false;
+	if (key == 97)
+		scene.manageXPos(-1);
+		
+	if (key == 100)
+		scene.manageXPos(1);
 	keys[key] = true;
 }
 

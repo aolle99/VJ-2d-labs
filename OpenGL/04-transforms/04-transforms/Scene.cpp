@@ -38,31 +38,33 @@ void Scene::render()
 	program.use();
 	program.setUniformMatrix4f("projection", projection);
 	program.setUniform4f("color", 1.0f, 1.0f, 1.0f, 1.0f);
+	float value = (sin(currentTime / 1000.f) + 1.0f) / 2.0f;
 
-	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(128.f, 48.f, 0.f));
+	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(128.f + value * (CAMERA_WIDTH-128.f -128.f), 48.f, 0.f));
 	modelview = glm::translate(modelview, glm::vec3(64.f, 64.f, 0.f));
-	modelview = glm::rotate(modelview, -currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
+	//modelview = glm::rotate(modelview, -currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
+	modelview = glm::scale(modelview, glm::vec3(2.f, 2.f, 2.f));
 	modelview = glm::translate(modelview, glm::vec3(-64.f, -64.f, 0.f));
 	program.setUniformMatrix4f("modelview", modelview);
 	quad->render();
 
-	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(384.f, 48.f, 0.f));
+	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(384.f + value * (CAMERA_WIDTH - 384.f - 128.f), 48.f, 0.f));
 	modelview = glm::translate(modelview, glm::vec3(64.f, 64.f, 0.f));
-	modelview = glm::rotate(modelview, currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
+	//modelview = glm::rotate(modelview, currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
 	modelview = glm::translate(modelview, glm::vec3(-64.f, -64.f, 0.f));
 	program.setUniformMatrix4f("modelview", modelview);
 	quad->render();
 
-	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(128.f, 304.f, 0.f));
+	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(128.f + value * (CAMERA_WIDTH - 128.f - 128.f), 304.f, 0.f));
 	modelview = glm::translate(modelview, glm::vec3(64.f, 64.f, 0.f));
-	modelview = glm::rotate(modelview, currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
+	//modelview = glm::rotate(modelview, currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
 	modelview = glm::translate(modelview, glm::vec3(-64.f, -64.f, 0.f));
 	program.setUniformMatrix4f("modelview", modelview);
 	quad->render();
 
-	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(384.f, 304.f, 0.f));
+	modelview = glm::translate(glm::mat4(1.0f), glm::vec3(384.f + value * (CAMERA_WIDTH - 384.f - 128.f), 304.f, 0.f));
 	modelview = glm::translate(modelview, glm::vec3(64.f, 64.f, 0.f));
-	modelview = glm::rotate(modelview, -currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
+	//modelview = glm::rotate(modelview, -currentTime / 1000.f, glm::vec3(0.0f, 0.0f, 1.0f));
 	modelview = glm::translate(modelview, glm::vec3(-64.f, -64.f, 0.f));
 	program.setUniformMatrix4f("modelview", modelview);
 	quad->render();
